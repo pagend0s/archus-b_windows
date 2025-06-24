@@ -15,7 +15,7 @@ The USB drive should not contain an EFI partition before mounting in WSL:
 
 # Software info
 The script uses tools distributed by MS and a verified Arch linux image available on the official project website.
-- MS WSL
+- MS WSL - https://learn.microsoft.com/en-us/windows/wsl/install
 - usbipd-win - https://github.com/dorssel/usbipd-win
 - bootstrap source - https://archlinux.org/download
 - ramroot - https://github.com/arcmags/ramroot
