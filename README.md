@@ -1,6 +1,6 @@
 # archus-b_windows
 
-arch_install_win.bat - open it to start
+======== arch_install_win.bat ======== open to start
 
 Fully automated creation of a bootable (UEFI) Archlinux system on USB loaded into RAM.
 
