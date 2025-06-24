@@ -18,6 +18,7 @@ The script uses tools distributed by MS and a verified Arch linux image availabl
 - MS WSL
 - usbipd-win - https://github.com/dorssel/usbipd-win
 - bootstrap source - https://archlinux.org/download
+- ramroot - https://github.com/arcmags/ramroot
 
 # Additional INFO ;)
 If you think I deserve a ☕️, you can send a few 🪙 to Bitcoin address:
