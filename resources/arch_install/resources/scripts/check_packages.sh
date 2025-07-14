@@ -58,6 +58,16 @@ else
 fi
 sleep 1
 
+if ! command -v wget &> /dev/null;
+then
+	echo -e  ${YELLOW}"wget is not installed. Installing.."${NC}
+	sudo apt install -y wget
+
+else
+	echo -e ${CYAN}"wget is already installed"${NC}
+fi
+sleep 1
+
 if ! command -v curl &> /dev/null;
 then
 	echo -e  ${YELLOW}"chroot is not installed. Installing.."${NC}
