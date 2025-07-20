@@ -204,7 +204,9 @@ function restart_sys {
 @"
 @echo off
 echo Continuing script after reboot...
-cmd.exe /c $path_after_restart\arch_install_win.bat
+cmd.exe /c "$path_after_restart\arch_install_win.bat"
+pushd %~dp0
+del "%~dp0after_reboot.bat"
 "@ | Set-Content -Path $postRebootScript -Encoding Ascii
 
 	# Prompt user for reboot confirmation
@@ -290,8 +292,11 @@ function attach_usb2wsl {
     }
 }
 
-if (Test-Path $path2inf) {
+if (Test-Path  $path2inf) {
 	$iniPath = "$path2inf"
+	if (!(Test-Path $postRebootScript )) {
+		Set-IniValue -FilePath "$path2inf" -Key "Restart" -Value 1
+	}
 	$get_progress = Get-Content $iniPath | Select-String "0"
 	# Read the file and extract numbers
 	Get-Content $iniPath | ForEach-Object {
@@ -314,25 +319,25 @@ if (Test-Path $path2inf) {
         usbipd unbind --all
 	Exit(0)       
     } elseif (!($get_progress -eq $null )) {
-	foreach ($line in $get_progress) {		
-		write-host "Essential function is missing: $line " -ForegroundColor RED
-		if ($line -like "*usbipd*") {
-			check_usbipd
-		}		
-		if ($line -like "*WinFeature*") { 
-			check_WindowsOptionalFeature
+		foreach ($line in $get_progress) {		
+			write-host "Essential function is missing: $line " -ForegroundColor RED
+			if ($line -like "*usbipd*") {
+				check_usbipd
+			}		
+			if ($line -like "*WinFeature*") { 
+				check_WindowsOptionalFeature
+			}
+			if ($line -like "*Restart*") { 
+				write-host "After installing the features and usbipd, a system restart is required!" -ForegroundColor YELLOW
+				restart_sys
+			}			
 		}
-		if ($line -like "*Restart*") { 
-			write-host "After installing the features and usbipd, a system restart is required!" -ForegroundColor YELLOW
-			restart_sys
-		}			
+		restart_sys
 	}
-  	restart_sys
-	} else {
-    	set_keyboard
-    	check_usbipd
-	check_WindowsOptionalFeature
-	restart_sys
-	Exit(0)
-    	}
+} else {
+    set_keyboard
+    check_usbipd
+    check_WindowsOptionalFeature
+    restart_sys
+    Exit(0)
 }
