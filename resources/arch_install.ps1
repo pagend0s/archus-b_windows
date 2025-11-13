@@ -1,4 +1,4 @@
-$archus_b_ver = "1.00"
+$archus_b_ver = "1.1"
 $script_path1 = $PSScriptRoot
 $script_path2 = Split-Path -Path $PSScriptRoot -Parent
 $script_path = $PSScriptRoot -replace '\\', '/'
@@ -341,3 +341,4 @@ if (Test-Path  $path2inf) {
     restart_sys
     Exit(0)
 }
+
