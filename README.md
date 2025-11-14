@@ -29,6 +29,8 @@ https://www.youtube.com/watch?v=n-ilkv_zAYU - Link where you can find informatio
 - How it bridges into the Linux pipeline
 - Configuration & Files
 - Repository structure (Windows + Linux)
+- Software info
+- Additional INFO
 
 ---
 
