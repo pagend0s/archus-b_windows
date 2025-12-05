@@ -41,8 +41,6 @@ This Windows edition wraps the original Archus-b flow with a **PowerShell + Batc
 3) Attaches a chosen **USB mass-storage device** to the WSL Debian distro,
 4) Launches the Linux entrypoint to perform the actual creation of the Arch USB medium.
 
-Version banner shown by scripts: **Archus-b ver: 1.1**.
-
 ---
 
 ## Features
@@ -135,25 +133,25 @@ Once inside WSL (Debian), **the Linux scripts you already know** take over:
 ├── arch_main_win.sh                   # WSL bridge → runs Linux arch_main.sh
 ├── arch_main.sh                       # Linux entrypoint (requires root)
 ├── resources/
-│   ├── arch_install.ps1               # Windows bootstrap (WSL + usbipd + USB attach)
-│   ├── Files/
-│   │   ├── progress.inf               # Runtime progress tracking
-│   │   └── keyboard_layout.inf        # Keyboard layout info
-│   └── scripts/
-│       ├── set_keymapping.ps1         # Keyboard mapping helper (Windows)
-│       ├── init_wsl_deb.sh            # Helper invoked inside WSL before main
-│       ├── check_packages.sh
-│       ├── fdisk_create.sh
-│       ├── dowload_and_check.sh
-│       ├── extrackt_and_move.sh
-│       ├── jail_bootstrap.sh
-│       ├── in_chroot.sh
-│       ├── in_chroot2.sh
-│       ├── replace_hooks.sh
-│       ├── umount_jail.sh
-│       ├── Error_handling/
-│       │   └── pacman_retrying.sh     # Required at runtime (copied into chroot)
-│       └── ramroot_1.1/               # RAMROOT helper (external content)
+   ├── arch_install.ps1               # Windows bootstrap (WSL + usbipd + USB attach)
+   ├── Files/
+   │   ├── progress.inf               # Runtime progress tracking
+   │   └── keyboard_layout.inf        # Keyboard layout info
+   └── scripts/
+       ├── set_keymapping.ps1         # Keyboard mapping helper (Windows)
+       ├── init_wsl_deb.sh            # Helper invoked inside WSL before main
+       ├── check_packages.sh
+       ├── fdisk_create.sh
+       ├── dowload_and_check.sh
+       ├── extrackt_and_move.sh
+       ├── jail_bootstrap.sh
+       ├── in_chroot.sh
+       ├── in_chroot2.sh
+       ├── replace_hooks.sh
+       ├── umount_jail.sh
+       ├── Error_handling/
+       │   └── pacman_retrying.sh     # Required at runtime (copied into chroot)
+       └── ramroot_1.1/               # RAMROOT helper (external content)
 ```
 
 # Software info
